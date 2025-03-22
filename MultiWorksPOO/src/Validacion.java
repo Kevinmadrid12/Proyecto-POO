@@ -9,7 +9,7 @@ public class Validacion {
 
     public String validarVacio (String str) {
         while (str.isEmpty()) {
-            out.print("Error: este campo no puede estar vacío\nIngrese un valor: ");
+            out.print("Error, este campo no puede estar vacío\nIngrese un valor: ");
             str = sc.nextLine();
         }
         return str;
@@ -20,12 +20,12 @@ public class Validacion {
             try {
                 num = Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException e) {
-                out.print("Error: el valor ingresado no es numérico\nIntente de nuevo: ");
+                out.print("Error, el valor ingresado no es numérico\nIntente de nuevo: ");
                 num = -1;
                 continue;
             }
             if (num < 0) {
-                out.print("Error: el valor ingresado no puede ser negativo\nIngrese un valor positivo: ");
+                out.print("Error, el valor ingresado no puede ser negativo\nIngrese un valor positivo: ");
                 num = -1;
             }
         } while (num < 0);
@@ -37,12 +37,12 @@ public class Validacion {
             try {
                 num = Double.parseDouble(sc.nextLine());
             } catch (NumberFormatException e) {
-                out.print("Error: el valor ingresado no es numérico\nIntente de nuevo: ");
+                out.print("Error, el valor ingresado no es numérico\nIntente de nuevo: ");
                 num = -1;
                 continue;
             }
             if (num < 0) {
-                out.print("Error: el valor ingresado no puede ser negativo\nIngrese un valor positivo: ");
+                out.print("Error, el valor ingresado no puede ser negativo\nIngrese un valor positivo: ");
                 num = -1;
             }
         } while (num < 0);
@@ -64,7 +64,7 @@ public class Validacion {
             }
             if (!result.equals(fecha)) {
                 result = "";
-                out.print("Error: debe ingresar la fecha en el formato dd/MM/yyyy.\nIntente de nuevo: ");
+                out.print("Error, debe ingresar la fecha en el formato dd/MM/yyyy.\nIntente de nuevo: ");
                 fecha = sc.nextLine();
             }
         } while (!result.equals(fecha));
