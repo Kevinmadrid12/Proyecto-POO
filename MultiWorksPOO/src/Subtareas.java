@@ -1,4 +1,4 @@
-public class Subtareas {
+public class Subtareas extends Datos {
     private int idSubtarea;
     private String tituloSubtarea;
     private String descripcionSubtarea;

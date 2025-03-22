@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static java.lang.System.out;
 
-public class Validacion {
+public class Datos {
     static Scanner sc = new Scanner(System.in);
 
     public String validarVacio (String str) {

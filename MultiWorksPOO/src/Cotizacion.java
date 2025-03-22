@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cotizacion extends Validacion {
+public class Cotizacion extends Datos {
     private String id;
     private Cliente cliente;
-    private List<Actividad> actividades;
+    private List<Asignacion> asignaciones;
     private String estado; // En proceso o Finalizada
     private double costosAdicionales;
 
@@ -12,14 +12,14 @@ public class Cotizacion extends Validacion {
     public Cotizacion(String id, Cliente cliente) {
         this.id = id;
         this.cliente = cliente;
-        this.actividades = new ArrayList<>();
+        this.asignaciones = new ArrayList<>();
         this.estado = "En proceso";
         this.costosAdicionales = 0;
     }
 
     // Para agregar una actividad
-    public void agregarActividad(Actividad actividad) {
-        actividades.add(actividad);
+    public void agregarAsignacion(Asignacion asig) {
+        asignaciones.add(asig);
     }
 
     // Para agregar costos adicionales
@@ -35,8 +35,8 @@ public class Cotizacion extends Validacion {
     // Para calcular el costo total de las actividades
     public double calcularCostoActividades() {
         double costoTotal = 0;
-        for (Actividad actividad : actividades) {
-            costoTotal += actividad.getCostoTotal();
+        for (Asignacion asig : asignaciones) {
+            costoTotal += asig.getCostoTotal();
         }
         return costoTotal;
     }
@@ -54,8 +54,8 @@ public class Cotizacion extends Validacion {
         resumen.append("Cliente: ").append(cliente).append("\n");
         resumen.append("Estado: ").append(estado).append("\n");
         resumen.append("Actividades:\n");
-        for (Actividad actividad : actividades) {
-            resumen.append(actividad).append("\n");
+        for (Asignacion asig : asignaciones) {
+            resumen.append(asig).append("\n");
         }
         resumen.append("Costo de Actividades: $").append(calcularCostoActividades()).append("\n");
         resumen.append("Costos Adicionales: $").append(costosAdicionales).append("\n");
