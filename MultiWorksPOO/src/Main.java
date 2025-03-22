@@ -4,7 +4,7 @@ import static java.lang.System.out;
 public class Main {
     public static void main(String[] args) {
 
-        Subtareas subtarea1 = new Subtareas();
+        Subtareas subtarea1 = new Subtareas(1,"Diseñar base de datos","Crear estructura SQL");
 
 
 
