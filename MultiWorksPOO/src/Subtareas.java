@@ -2,16 +2,16 @@ public class Subtareas {
     private int idSubtarea;
     private String tituloSubtarea;
     private String descripcionSubtarea;
-    private Asignacion asignacion; // Relación con Asignacion (ya implementada en otro lado)
+    private Asignacion asignacion; 
 
     public Subtareas(int idSubtarea, String tituloSubtarea, String descripcionSubtarea) {
         this.idSubtarea = idSubtarea;
         this.tituloSubtarea = tituloSubtarea;
         this.descripcionSubtarea = descripcionSubtarea;
-        this.asignacion = null; // Inicialmente sin asignación
+        this.asignacion = null; 
     }
 
-    // Getters y Setters
+ 
     public int getIdSubtarea() {
         return idSubtarea;
     }
@@ -40,9 +40,9 @@ public class Subtareas {
         return asignacion;
     }
 
-    // Método para asignar una subtarea a una asignación existente
+   
     public void asignarSubtarea(Asignacion asignacion) {
-        if (this.asignacion == null) { // Solo asignar si aún no tiene
+        if (this.asignacion == null) { 
             this.asignacion = asignacion;
         }
     }
