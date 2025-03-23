@@ -1,10 +1,11 @@
+import java.time.LocalDate;
 import java.util.*;
 
 public class Cotizacion extends Datos {
     private int idCotizacion, idCliente, cantidadHorasProyecto;
     private String estado, modalidad;
     private double costosAdicionales, costoAsignaciones, total;
-    private Date fechaInicio, fechaFin;
+    private LocalDate fechaInicio, fechaFin;
     private HashMap<Integer,Cotizacion> cotizaciones = new HashMap<>();
 
     public int getIdCotizacion() {
@@ -17,7 +18,7 @@ public class Cotizacion extends Datos {
 
     // Constructor
     public Cotizacion() {}
-    public Cotizacion(int idCotizacion, int cantidadHorasProyecto, String estado, String modalidad, double costosAdicionales, double costoAsignaciones, double total, Date fechaInicio, Date fechaFin) {
+    public Cotizacion(int idCotizacion, int cantidadHorasProyecto, String estado, String modalidad, double costosAdicionales, double costoAsignaciones, double total, LocalDate fechaInicio, LocalDate fechaFin) {
         this.idCotizacion = idCotizacion;
         this.cantidadHorasProyecto = cantidadHorasProyecto;
         this.estado = estado;

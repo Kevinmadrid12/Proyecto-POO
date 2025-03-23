@@ -1,53 +1,48 @@
 import java.util.HashMap;
 import java.util.Date;
+import java.time.LocalDate;
 
 
 public class Main {
     public static void main(String[] args) {
-        // Crear un HashMap para almacenar las asignaciones
-        HashMap<Integer, Asignacion> asignacionesMap = new HashMap<>();
+        LocalDate fecha = LocalDate.now();
 
         // Crear una asignación
-        Asignacion asignacion1 = new Asignacion(
+        Asignacion asig = new Asignacion(
                 1, // idAsignacion
                 40, // cantidadHoras
                 "Instalación de Redes", // tituloActividad
                 400.0, // costoBase
                 10.0, // incrementoExtra
                 440.0, // total (costoBase + incrementoExtra)
-                new Date(), // fechaHoraInicio
-                new Date(), // fechaHoraFin
-                asignacionesMap // HashMap de asignaciones
+                fecha, // fechaHoraInicio
+                fecha.minusDays(1) // fechaHoraFin
         );
 
         // Agregar la asignación al HashMap
-        asignacion1.crearAsignacion(asignacion1);
+        asig.crearAsignacion(asig);
 
         // Crear otra asignación
-        Asignacion asignacion2 = new Asignacion(
+        asig = new Asignacion(
                 2, // idAsignacion
                 20, // cantidadHoras
                 "Configuración de Routers", // tituloActividad
                 200.0, // costoBase
                 5.0, // incrementoExtra
                 210.0, // total (costoBase + incrementoExtra)
-                new Date(), // fechaHoraInicio
-                new Date(), // fechaHoraFin
-                asignacionesMap // HashMap de asignaciones
+                fecha.minusWeeks(1), // fechaHoraInicio
+                fecha.minusYears(1) // fechaHoraFin
         );
 
         // Agregar la segunda asignación al HashMap
-        asignacion2.crearAsignacion(asignacion2);
+        asig.crearAsignacion(asig);
 
         // Mostrar todas las asignaciones registradas
         System.out.println("=== Todas las Asignaciones Registradas ===");
-        System.out.println(asignacion1.consultarAsignacion());
-
-        // Crear un HashMap para almacenar las cotizaciones
-        HashMap<Integer, Cotizacion> cotizacionesMap = new HashMap<>();
+        System.out.println(asig.consultarAsignacion());
 
         // Crear una cotización
-        Cotizacion cotizacion1 = new Cotizacion(
+        Cotizacion cot = new Cotizacion(
                 1, // idCotizacion
                 100, // cantidadHorasProyecto
                 "En proceso", // estado
@@ -55,20 +50,19 @@ public class Main {
                 1500.0, // costosAdicionales
                 2000.0, // costoAsignaciones
                 3500.0, // total
-                new Date(), // fechaInicio
-                new Date(), // fechaFin
-                cotizacionesMap // HashMap de cotizaciones
+                fecha.minusDays(4), // fechaInicio
+                fecha.minusWeeks(2) // fechaFin
         );
 
         // Agregar la cotización al HashMap
-        cotizacion1.crearCotizacion(cotizacion1);
+        cot.crearCotizacion(cot);
 
         // Mostrar el resumen de la cotización
         System.out.println("=== Resumen de la Cotización ===");
-        System.out.println(cotizacion1);
+        System.out.println(cot);
 
         // Crear otra cotización
-        Cotizacion cotizacion2 = new Cotizacion(
+        cot = new Cotizacion(
                 2, // idCotizacion
                 80, // cantidadHorasProyecto
                 "Finalizada", // estado
@@ -76,18 +70,15 @@ public class Main {
                 1000.0, // costosAdicionales
                 1500.0, // costoAsignaciones
                 2500.0, // total
-                new Date(), // fechaInicio
-                new Date(), // fechaFin
-                cotizacionesMap // HashMap de cotizaciones
+                fecha, // fechaInicio
+                fecha.minusDays(2) // fechaFin
         );
 
-        // Agregar la segunda cotización al HashMap
-        cotizacion2.crearCotizacion(cotizacion2);
+        // Actualizar cotización
+        cot.actualizarCotizacion(cot);
 
         // Mostrar todas las cotizaciones registradas
         System.out.println("=== Todas las Cotizaciones Registradas ===");
-        for (Cotizacion cotizacion : cotizacionesMap.values()) {
-            System.out.println(cotizacion);
-        }
+        System.out.println(cot.consultarCotizacion());
     }
 }

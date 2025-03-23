@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,7 +6,7 @@ public class Asignacion {
     private int idAsignacion, idCotizacion, idEmpleado, cantidadHoras;
     private String tituloActividad;
     private double costoBase, incrementoExtra, total;
-    private Date fechaHoraInicio, fechaHoraFin;
+    private LocalDate fechaHoraInicio, fechaHoraFin;
     private HashMap<Integer, Asignacion> asignaciones = new HashMap<>();
 
     public int getIdAsignacion() {
@@ -23,7 +23,7 @@ public class Asignacion {
 
     //Constructor
     public Asignacion () {}
-    public Asignacion(int idAsignacion, int cantidadHoras, String tituloActividad, double costoBase, double incrementoExtra, double total, Date fechaHoraInicio, Date fechaHoraFin, HashMap<Integer, Asignacion> asignaciones) {
+    public Asignacion(int idAsignacion, int cantidadHoras, String tituloActividad, double costoBase, double incrementoExtra, double total, LocalDate fechaHoraInicio, LocalDate fechaHoraFin) {
         this.idAsignacion = idAsignacion;
         this.cantidadHoras = cantidadHoras;
         this.tituloActividad = tituloActividad;
@@ -32,7 +32,6 @@ public class Asignacion {
         this.total = total;
         this.fechaHoraInicio = fechaHoraInicio;
         this.fechaHoraFin = fechaHoraFin;
-        this.asignaciones = asignaciones;
     }
 
     public void crearAsignacion (Asignacion asignacion) {
