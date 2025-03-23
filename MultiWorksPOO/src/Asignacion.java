@@ -1,21 +1,23 @@
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Asignacion {
-    private int idAsignacion, cantidadHoras;
+    private int idAsignacion;
+    private int cantidadHoras;
     private String tituloActividad;
-    private double costoBase, incrementoExtra, total;
-    private Date fechaHoraInicio, fechaHoraFin;
-    private HashMap<Integer, Asignacion> asignaciones = new HashMap<>();
+    private double costoBase;
+    private double incrementoExtra;
+    private double total;
+    private LocalDate fechaHoraInicio;
+    private LocalDate fechaHoraFin;
 
-    public int getIdAsignacion() {
-        return idAsignacion;
-    }
+    
+    private static HashMap<Integer, Asignacion> asignaciones = new HashMap<>();
 
-    //Constructor
-    public Asignacion () {}
-    public Asignacion(int idAsignacion, int cantidadHoras, String tituloActividad, double costoBase, double incrementoExtra, double total, Date fechaHoraInicio, Date fechaHoraFin, HashMap<Integer, Asignacion> asignaciones) {
+    // Constructor
+    public Asignacion(int idAsignacion, int cantidadHoras, String tituloActividad, double costoBase,
+                      double incrementoExtra, double total, LocalDate fechaHoraInicio, LocalDate fechaHoraFin) {
         this.idAsignacion = idAsignacion;
         this.cantidadHoras = cantidadHoras;
         this.tituloActividad = tituloActividad;
@@ -24,26 +26,38 @@ public class Asignacion {
         this.total = total;
         this.fechaHoraInicio = fechaHoraInicio;
         this.fechaHoraFin = fechaHoraFin;
-        this.asignaciones = asignaciones;
     }
 
-    public void crearAsignacion (Asignacion asignacion) {
-        asignaciones.put(asignacion.getIdAsignacion(), asignacion);
+    // ✅ Método para agregar asignaciones al HashMap
+    public void crearAsignacion(Asignacion asignacion) {
+        asignaciones.put(asignacion.idAsignacion, asignacion);
+        System.out.println("Asignación creada:\n" + asignacion);
     }
 
-    public void actualizarAsignacion (Asignacion asignacion) {
-        asignaciones.replace(asignacion.getIdAsignacion(), asignacion);
-    }
-
-    public void eliminarAsignacion (Asignacion asignacion) {
-        asignaciones.remove(asignacion.getIdAsignacion());
-    }
-
-    public String consultarAsignacion () {
-        StringBuilder datos = new StringBuilder();
-        for (Map.Entry<Integer,Asignacion> entry : asignaciones.entrySet()) {
-            datos.append("ID asignación: ").append(entry.getKey()).append(", datos: ").append(entry.getValue()).append("\n");
+    // ✅ Método para consultar todas las asignaciones
+    public String consultarAsignacion() {
+        StringBuilder resultado = new StringBuilder("\n=== Todas las Asignaciones Registradas ===\n");
+        for (Map.Entry<Integer, Asignacion> entry : asignaciones.entrySet()) {
+            resultado.append(entry.getValue().toString()).append("\n");
         }
-        return datos.toString();
+        return resultado.toString();
+    }
+
+    // ✅ Método toString mejorado para visualización
+    @Override
+    public String toString() {
+        return String.format(
+                "\n🆔 ID Asignación: %d\n" +
+                        "🔹 Título: %s\n" +
+                        "⏳ Horas: %d\n" +
+                        "💰 Costo Base: $%.2f\n" +
+                        "📈 Incremento Extra: $%.2f\n" +
+                        "💵 Total: $%.2f\n" +
+                        "📅 Inicio: %s\n" +
+                        "📆 Fin: %s\n" +
+                        "------------------------------",
+                idAsignacion, tituloActividad, cantidadHoras, costoBase, incrementoExtra, total,
+                fechaHoraInicio, fechaHoraFin
+        );
     }
 }
