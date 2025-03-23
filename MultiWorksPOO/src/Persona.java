@@ -7,8 +7,8 @@ public class Persona extends Datos {
     protected Date fechaCreacion, fechaActualizacion, fechaInactivacion;
     private HashMap<Integer,Persona> personas = new HashMap<>();
 
+    //Constructores
     public Persona() {}
-
     public Persona(String nombre, String documento, String telefono, String correo, String direccion, String estado, String creadoPor, Date fechaCreacion, Date fechaActualizacion, Date fechaInactivacion) {
         this.telefono = telefono;
         this.nombre = nombre;

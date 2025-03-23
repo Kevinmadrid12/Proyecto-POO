@@ -10,10 +10,8 @@ public class Cliente extends Persona {
         return idCliente;
     }
 
-    public void setIdCliente(int id) {
-        this.idCliente = id;
-    }
-
+    //Constructores
+    public Cliente () {}
     public Cliente(int idCliente, String nombre, String documento, String telefono, String correo, String direccion, String estado, String creadoPor, Date fechaCreacion, Date fechaActualizacion, Date fechaInactivacion) {
         super(nombre, documento, telefono, correo, direccion, estado, creadoPor, fechaCreacion, fechaActualizacion, fechaInactivacion);
         this.idCliente = idCliente;

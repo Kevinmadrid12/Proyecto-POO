@@ -11,18 +11,7 @@ public class Empleado extends Persona {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(int id) {
-        idEmpleado = id;
-    }
-
-    public String getTipoContratacion() {
-        return tipoContratacion;
-    }
-
-    public void setTipoContratacion(String tipo) {
-        tipoContratacion = tipo;
-    }
-
+    //Constructores
     public Empleado () {}
     public Empleado(int idEmpleado, String nombre, String documento, String telefono, String correo, String direccion, String estado, String creadoPor, Date fechaCreacion, Date fechaActualizacion, Date fechaInactivacion, String tipoContratacion) {
         super(nombre, documento, telefono, correo, direccion, estado, creadoPor, fechaCreacion, fechaActualizacion, fechaInactivacion);

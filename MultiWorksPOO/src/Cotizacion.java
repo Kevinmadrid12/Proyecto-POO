@@ -1,25 +1,49 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Cotizacion extends Datos {
-    private String id;
-    private Cliente cliente;
-    private List<Asignacion> asignaciones;
-    private String estado; // En proceso o Finalizada
-    private double costosAdicionales;
+    private int idCotizacion, cantidadHorasProyecto;
+    private String estado, modalidad;
+    private double costosAdicionales, costoAsignaciones, total;
+    private Date fechaInicio, fechaFin;
+    private HashMap<Integer,Cotizacion> cotizaciones = new HashMap<>();
 
-    // Constructor
-    public Cotizacion(String id, Cliente cliente) {
-        this.id = id;
-        this.cliente = cliente;
-        this.asignaciones = new ArrayList<>();
-        this.estado = "En proceso";
-        this.costosAdicionales = 0;
+    public int getIdCotizacion() {
+        return idCotizacion;
     }
 
-    // Para agregar una actividad
-    public void agregarAsignacion(Asignacion asig) {
-        asignaciones.add(asig);
+    // Constructor
+    public Cotizacion() {}
+    public Cotizacion(int idCotizacion, int cantidadHorasProyecto, String estado, String modalidad, double costosAdicionales, double costoAsignaciones, double total, Date fechaInicio, Date fechaFin, HashMap<Integer, Cotizacion> cotizaciones) {
+        this.idCotizacion = idCotizacion;
+        this.cantidadHorasProyecto = cantidadHorasProyecto;
+        this.estado = estado;
+        this.modalidad = modalidad;
+        this.costosAdicionales = costosAdicionales;
+        this.costoAsignaciones = costoAsignaciones;
+        this.total = total;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.cotizaciones = cotizaciones;
+    }
+
+    public void crearCotizacion (Cotizacion cotizacion) {
+        cotizaciones.put(cotizacion.getIdCotizacion(), cotizacion);
+    }
+
+    public void actualizarCotizacion (Cotizacion cotizacion) {
+        cotizaciones.replace(cotizacion.getIdCotizacion(), cotizacion);
+    }
+
+    public void eliminarCotizacion (Cotizacion cotizacion) {
+        cotizaciones.remove(cotizacion.getIdCotizacion());
+    }
+
+    public String consultarCotizacion () {
+        StringBuilder datos = new StringBuilder();
+        for (Map.Entry<Integer,Cotizacion> entry : cotizaciones.entrySet()) {
+            datos.append("ID cotización: ").append(entry.getKey()).append(", datos: ").append(entry.getValue()).append("\n");
+        }
+        return datos.toString();
     }
 
     // Para agregar costos adicionales
@@ -35,31 +59,14 @@ public class Cotizacion extends Datos {
     // Para calcular el costo total de las actividades
     public double calcularCostoActividades() {
         double costoTotal = 0;
-        for (Asignacion asig : asignaciones) {
+        /*for (Asignacion asig : asignaciones) {
             costoTotal += asig.getCostoTotal();
-        }
+        }*/
         return costoTotal;
     }
 
     // Para calcular el costo total de la cotización (actividades + costos adicionales)
     public double calcularCostoTotal() {
         return calcularCostoActividades() + costosAdicionales;
-    }
-
-    // Para mostrar el resumen de la cotización
-    @Override
-    public String toString() {
-        StringBuilder resumen = new StringBuilder();
-        resumen.append("Cotización #").append(id).append("\n");
-        resumen.append("Cliente: ").append(cliente).append("\n");
-        resumen.append("Estado: ").append(estado).append("\n");
-        resumen.append("Actividades:\n");
-        for (Asignacion asig : asignaciones) {
-            resumen.append(asig).append("\n");
-        }
-        resumen.append("Costo de Actividades: $").append(calcularCostoActividades()).append("\n");
-        resumen.append("Costos Adicionales: $").append(costosAdicionales).append("\n");
-        resumen.append("Costo Total: $").append(calcularCostoTotal()).append("\n");
-        return resumen.toString();
     }
 }
