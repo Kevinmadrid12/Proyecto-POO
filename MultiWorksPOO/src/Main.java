@@ -80,5 +80,33 @@ public class Main {
         // Mostrar todas las cotizaciones registradas
         System.out.println("=== Todas las Cotizaciones Registradas ===");
         System.out.println(cot.consultarCotizacion());
+
+        // Creamos el objeto gestor de subtareas
+        Subtarea gestorSubtareas = new Subtarea();
+
+        // Creamos y agregamos dos subtareas
+        Subtarea sub1 = new Subtarea(1, "Subtarea 1", "Descripción de la subtarea 1");
+        Subtarea sub2 = new Subtarea(2, "Subtarea 2", "Descripción de la subtarea 2");
+        gestorSubtareas.crearSubtarea(sub1);
+        gestorSubtareas.crearSubtarea(sub2);
+
+        // Consultamos y mostramos las subtareas
+        System.out.println("Subtareas iniciales:");
+        System.out.println(gestorSubtareas.consultarSubtarea());
+
+        // Actualizamos la subtarea 1
+        Subtarea sub1Actualizada = new Subtarea(1, "Subtarea 1 Actualizada", "Nueva descripción");
+        gestorSubtareas.actualizarSubtarea(sub1Actualizada);
+
+        // Consultamos nuevamente para ver la actualización
+        System.out.println("Subtareas tras actualizar la 1:");
+        System.out.println(gestorSubtareas.consultarSubtarea());
+
+        // Eliminamos la subtarea 2
+        gestorSubtareas.eliminarSubtarea(new Subtarea(2, "", ""));
+
+        // Consultamos para ver el estado final
+        System.out.println("Subtareas tras eliminar la 2:");
+        System.out.println(gestorSubtareas.consultarSubtarea());
     }
 }
