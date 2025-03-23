@@ -12,7 +12,7 @@ public class Asignacion {
     private LocalDate fechaHoraInicio;
     private LocalDate fechaHoraFin;
 
-    // 🔴 SOLUCIÓN: Declaramos el HashMap para almacenar asignaciones
+    
     private static HashMap<Integer, Asignacion> asignaciones = new HashMap<>();
 
     // Constructor
