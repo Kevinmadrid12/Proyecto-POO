@@ -20,7 +20,6 @@ public class Main {
             System.out.println("1️⃣ Agregar Cliente");
             System.out.println("2️⃣ Listar Clientes");
             System.out.println("3️⃣ Inactivar Cliente");
-            System.out.println("4️⃣ Salir");
             System.out.println("4️⃣ Eliminar Cliente");
             System.out.println("5️⃣ Salir");
             System.out.print("👉 Ingrese una opción: ");
