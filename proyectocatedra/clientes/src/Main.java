@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Excepción personalizada para validar nombres
 class NombreInvalidoException extends Exception {
     public NombreInvalidoException(String mensaje) {
         super(mensaje);
@@ -30,7 +29,7 @@ public class Main {
                     case 1 -> agregarCliente();
                     case 2 -> listarClientes();
                     case 3 -> inactivarCliente();
-                    case 4 -> eliminarCliente(); // Llamamos al nuevo método
+                    case 4 -> eliminarCliente(); 
                     case 5 -> System.out.println("🚪 Saliendo del sistema...");
                     default -> System.out.println("❌ Opción inválida. Intente de nuevo.");
                 }
@@ -51,7 +50,6 @@ public class Main {
         try {
             int id = Integer.parseInt(scanner.nextLine());
 
-            // Buscar cliente por ID
             Cliente clienteAEliminar = null;
             for (Cliente cliente : clientes) {
                 if (cliente.getIdCliente() == id) {
@@ -78,7 +76,7 @@ public class Main {
         while (true) {
             try {
                 nombre = leerEntrada("👤 Nombre: ");
-                validarNombre(nombre); // Lanza una excepción si es inválido
+                validarNombre(nombre); 
                 break;
             } catch (NombreInvalidoException e) {
                 System.out.println("❌ " + e.getMessage());
