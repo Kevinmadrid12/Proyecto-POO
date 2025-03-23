@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Asignacion {
-    private int idAsignacion, cantidadHoras;
+    private int idAsignacion, idCotizacion, idEmpleado, cantidadHoras;
     private String tituloActividad;
     private double costoBase, incrementoExtra, total;
     private Date fechaHoraInicio, fechaHoraFin;
@@ -11,6 +11,14 @@ public class Asignacion {
 
     public int getIdAsignacion() {
         return idAsignacion;
+    }
+
+    public void setIdCotizacion(int idCotizacion) {
+        this.idCotizacion = idCotizacion;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
     //Constructor

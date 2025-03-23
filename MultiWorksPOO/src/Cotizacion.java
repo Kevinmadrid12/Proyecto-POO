@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Cotizacion extends Datos {
-    private int idCotizacion, cantidadHorasProyecto;
+    private int idCotizacion, idCliente, cantidadHorasProyecto;
     private String estado, modalidad;
     private double costosAdicionales, costoAsignaciones, total;
     private Date fechaInicio, fechaFin;
@@ -11,9 +11,13 @@ public class Cotizacion extends Datos {
         return idCotizacion;
     }
 
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
     // Constructor
     public Cotizacion() {}
-    public Cotizacion(int idCotizacion, int cantidadHorasProyecto, String estado, String modalidad, double costosAdicionales, double costoAsignaciones, double total, Date fechaInicio, Date fechaFin, HashMap<Integer, Cotizacion> cotizaciones) {
+    public Cotizacion(int idCotizacion, int cantidadHorasProyecto, String estado, String modalidad, double costosAdicionales, double costoAsignaciones, double total, Date fechaInicio, Date fechaFin) {
         this.idCotizacion = idCotizacion;
         this.cantidadHorasProyecto = cantidadHorasProyecto;
         this.estado = estado;
@@ -23,7 +27,6 @@ public class Cotizacion extends Datos {
         this.total = total;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.cotizaciones = cotizaciones;
     }
 
     public void crearCotizacion (Cotizacion cotizacion) {

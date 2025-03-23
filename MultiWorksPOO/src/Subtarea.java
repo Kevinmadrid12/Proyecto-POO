@@ -2,13 +2,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Subtarea extends Datos {
-    private int idSubtarea;
+    private int idSubtarea, idAsignacion;
     private String tituloSubtarea, descripcionSubtarea;
     private Asignacion asignacion;
     private HashMap<Integer,Subtarea> subtareas = new HashMap<>();
 
     public int getIdSubtarea() {
         return idSubtarea;
+    }
+
+    public void setIdAsignacion(int idAsignacion) {
+        this.idAsignacion = idAsignacion;
     }
 
     //Constructores
